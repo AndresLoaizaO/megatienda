@@ -1,11 +1,10 @@
-import { CartItem } from './cart.model';
+import { Product } from './product.model';
 
 export interface Order {
   id: string;
   userId: string;
-  items: CartItem[];
-  totalAmount: number;
-  status: 'pendiente' | 'completado';
-  paymentMethod: string;
-  createdAt: Date;
+  products: Product[];
+  total: number;
+  date: Date;
+  status: "pendiente" | "completado";
 }
