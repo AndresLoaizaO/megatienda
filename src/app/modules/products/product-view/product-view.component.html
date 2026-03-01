@@ -1,1 +1,26 @@
-<p>product-view works!</p>
+<div class="product-grid-card">
+  <p-card [style]="{ width: '280px', overflow: 'hidden' }">
+    <ng-template pTemplate="header">
+      <div class="relative">
+        <img [src]="producto.imagenUrl" [alt]="producto.name" class="w-full h-48 object-cover" />
+        <span class="status-badge">NUEVO</span>
+      </div>
+    </ng-template>
+
+    <div class="mb-2">
+      <span class="text-sm text-500 uppercase font-bold">{{ producto.categoria }}</span>
+      <div class="text-xl font-bold text-900 mt-1">{{ producto.name }}</div>
+    </div>
+
+    <div class="flex align-items-center justify-content-between mb-3">
+            <span class="text-2xl font-semibold text-primary">
+                {{ producto.precio | currency:'USD' }}
+            </span>
+      <p-rating [(ngModel)]="producto.rating" [readonly]="true"></p-rating>
+    </div>
+
+    <ng-template pTemplate="footer">
+      <p-button label="Agregar" icon="pi pi-plus" styleClass="w-full p-button-outlined"></p-button>
+    </ng-template>
+  </p-card>
+</div>
