@@ -1,7 +1,7 @@
-export interface interfaceProduct {
-  name: string;
-  categoria: string;
-  precio: number;
-  rating: number;
-  imagenUrl: string;
+export class interfaceProduct {
+  name: string | null = null
+  categoria: string | null = null
+  precio: number | null = null;
+  rating: number | null = null;
+  imagenUrl: string | null = null;
 }
