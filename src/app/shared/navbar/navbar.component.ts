@@ -25,7 +25,7 @@ export class NavbarComponent {
   search() {
     if (!this.searchText.trim()) return;
 
-    this.router.navigate(['/dashboard'], {
+    this.router.navigate(['/catalogo'], {
       queryParams: { q: this.searchText }
     });
 
