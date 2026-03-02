@@ -1,26 +1,31 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './modules/auth/pages/login/login.component';
-import { DashboardComponent } from './modules/dashboard/pages/dashboard/dashboard.component';
 import { RegisterComponent } from './modules/auth/pages/register/register.component';
-import { authGuard } from './core/guards/auth.guard';
 import { ProductCatalogComponent } from './modules/products/product-catalog/product-catalog.component';
+import { adminGuard } from './core/guards/admin.guard';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'auth/login', pathMatch: 'full' },
+
+  { path: '', redirectTo: 'catalogo', pathMatch: 'full' },
 
   { path: 'auth/login', component: LoginComponent },
-  { path: 'catalogo', component: ProductCatalogComponent }, // ruta del catalogo
+  { path: 'auth/register', component: RegisterComponent },
+
+  { path: 'catalogo', component: ProductCatalogComponent },
 
   {
-    path: 'dashboard',
-    component: DashboardComponent,
-    canActivate: [authGuard],
+  path: 'admin',
+  loadComponent: () =>
+    import('./modules/admin/pages/admin/admin.component')
+      .then(m => m.AdminComponent),
+  canActivate: [adminGuard]
   },
 
-  { path: 'auth/register', component: RegisterComponent },
   {
     path: 'cart',
     loadComponent: () =>
-      import('./modules/cart/cart/cart.component').then((m) => m.CartComponent),
-  },
+      import('./modules/cart/cart/cart.component')
+        .then(m => m.CartComponent)
+  }
+
 ];

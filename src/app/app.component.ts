@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [RouterOutlet, NavbarComponent, CommonModule],
   template: `
-    <app-navbar *ngIf="authService.isAuthenticated()"></app-navbar>
+    <app-navbar></app-navbar>
     <router-outlet></router-outlet>
   `
 })

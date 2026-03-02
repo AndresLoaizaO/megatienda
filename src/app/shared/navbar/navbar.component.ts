@@ -10,30 +10,38 @@ import { AuthService } from '../../core/services/auth.service';
   standalone: true,
   imports: [CommonModule, RouterModule, FormsModule],
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent {
-
   searchText: string = '';
 
   constructor(
     public cartService: CartService,
     public authService: AuthService,
-    private router: Router
+    private router: Router,
   ) {}
 
   search() {
     if (!this.searchText.trim()) return;
 
     this.router.navigate(['/catalogo'], {
-      queryParams: { q: this.searchText }
+      queryParams: { q: this.searchText },
     });
 
     this.searchText = '';
   }
 
   isAdmin(): boolean {
-    return this.authService.getCurrentUserRole() === 'admin';
+    return this.authService.userRole === 'ADMIN';
+  }
+  dropdownOpen = false;
+
+  toggleDropdown() {
+    this.dropdownOpen = !this.dropdownOpen;
   }
 
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/catalogo']);
+  }
 }

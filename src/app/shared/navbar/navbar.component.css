@@ -77,3 +77,81 @@ a {
   padding: 2px 6px;
   border-radius: 50%;
 }
+.login-btn {
+  background-color: #f4b400; /* amarillo */
+  color: black;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  background-color: #e0a800;
+}
+
+.admin-link {
+  color: white;
+  margin-right: 15px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.cart-icon {
+  width: 50px;
+  height: 50px;
+  color: white;
+}
+
+.cart {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.user-menu {
+  position: relative;
+  cursor: pointer;
+  color: white;
+  font-weight: 500;
+}
+
+.user-name {
+  padding: 8px 12px;
+}
+
+.dropdown {
+  position: absolute;
+  top: 35px;
+  right: 0;
+  background: white;
+  min-width: 160px;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+.dropdown-item {
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+  background: white;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background: #f2f2f2;
+}
+
+.logout-btn {
+  color: red;
+}
