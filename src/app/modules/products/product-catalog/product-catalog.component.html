@@ -1,9 +1,9 @@
 <div class="flex h-screen">
   <!-- Filtros (20%) -->
-  <div class="w-20rem md:w-20rem flex-shrink-0 p-2 border-right-1 surface-border">
+  <div class="w-20rem md:w-20rem flex-shrink-0 p-2 border-right-1 surface-border" style="border-right-width: 0px !important">
     <!-- contenido de filtros -->
 
-      <div class="filters-container p-3 border-right-1 surface-border">
+      <div class="filters-container p-3 border-right-1 surface-border" style="border-right-width: 0px !important">
           <!-- Filtro por categoría -->
           <div class="mb-3">
               <label for="category" class="block font-bold mb-2">Categoría</label>
@@ -27,7 +27,7 @@
 
           <!-- Botón aplicar -->
           <div class="mt-4">
-              <button (click)="applyFilters()" class="w-full p-2 border-round bg-primary text-white">
+              <button style="color: black !important; " (click)="applyFilters()" class="w-full p-2 border-round bg-primary text-white">
                   Aplicar filtros
               </button>
           </div>

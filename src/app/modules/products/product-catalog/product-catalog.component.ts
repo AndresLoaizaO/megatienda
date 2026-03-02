@@ -4,6 +4,7 @@ import { ProductViewComponent } from '../product-view/product-view.component';
 import {Product} from '../../../models/product.model';
 import {ProductServiceService} from '../../../services/product-service.service';
 import {FormsModule} from '@angular/forms';
+import {ProductFilter} from '../../../models/productFilter';
 
 @Component({
   selector: 'app-product-catalog',
@@ -44,13 +45,15 @@ export class ProductCatalogComponent implements OnInit {
   }
 
   applyFilters() {
-    console.log('Filtros aplicados:', {
+    const filtro: ProductFilter = {
       category: this.selectedCategory,
       minPrice: this.minPrice,
       maxPrice: this.maxPrice
-    });
-    // Aquí puedes emitir un evento o llamar a un servicio para filtrar productos
+    };
+
+    this.listProducts = this._productServiceService.filtrarProducts(this.listProductsTodos, filtro);
   }
+
 
 
 }
