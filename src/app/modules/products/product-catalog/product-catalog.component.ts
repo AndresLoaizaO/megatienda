@@ -5,6 +5,10 @@ import {Product} from '../../../models/product.model';
 import {ProductServiceService} from '../../../services/product-service.service';
 import {FormsModule} from '@angular/forms';
 import {ProductFilter} from '../../../models/productFilter';
+import {SelectItem} from 'primeng/api';
+import {DropdownModule} from 'primeng/dropdown';
+import {Select} from 'primeng/select';
+import {Button} from 'primeng/button';
 
 @Component({
   selector: 'app-product-catalog',
@@ -13,6 +17,9 @@ import {ProductFilter} from '../../../models/productFilter';
     CommonModule,
     ProductViewComponent,
     FormsModule,
+    DropdownModule,
+    Select,
+    Button,
     // importa el otro standalone component
   ],
   templateUrl: './product-catalog.component.html',
@@ -22,6 +29,9 @@ export class ProductCatalogComponent implements OnInit {
   listProducts: Product[] = [];
   listProductsTodos: Product[] = [];
   categories: string[] = [];
+  categoriesOptions: SelectItem[] = [];
+  rangeMinPrice: SelectItem[] = [];
+  rangeMaxPrice: SelectItem[] = [];
   selectedCategory: string = '';
   minPrice: number | null = null;
   maxPrice: number | null = null;
@@ -42,6 +52,26 @@ export class ProductCatalogComponent implements OnInit {
       .filter(p => p.category)
       .map(p => p.category as string))];
     console.log(this.categories);
+    this.categoriesOptions = [
+      { label: 'Todas', value: '' },
+      ...this.categories.map(cat => ({
+        label: cat,
+        value: cat
+      }))
+    ];
+    this.rangeMinPrice = [
+      {value: 10000, label: '10.000$'},
+      {value: 20000, label: '20.000$'},
+      {value: 50000, label: '50.000$'},
+      {value: 100000, label: '100.000$'},
+      {value: 200000, label: '200.000$'},
+    ];
+    this.rangeMaxPrice = [
+      {value: 500000, label: '500.000$'},
+      {value: 1000000, label: '1.000.000$'},
+      {value: 2000000, label: '2.000.000$'},
+      {value: 5000000, label: '5.0000.000$'},
+    ];
   }
 
   applyFilters() {
@@ -52,6 +82,10 @@ export class ProductCatalogComponent implements OnInit {
     };
 
     this.listProducts = this._productServiceService.filtrarProducts(this.listProductsTodos, filtro);
+  }
+  clearFilters() {
+    this.listProducts = this.listProductsTodos;
+
   }
 
 
