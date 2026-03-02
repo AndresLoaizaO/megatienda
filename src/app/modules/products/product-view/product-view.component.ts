@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {Rating} from 'primeng/rating';
 import {Button} from 'primeng/button';
 import {FormsModule} from '@angular/forms';
-import {Card} from 'primeng/card';
 import {interfaceProduct} from '../interface/interfaceProduct';
 import {SharedModule} from 'primeng/api';
+import { CardModule } from 'primeng/card';
+import { RatingModule } from 'primeng/rating';
 
 @Component({
   selector: 'app-product-view',
   standalone: true,
-  imports: [CommonModule, Rating, Button, FormsModule, Card, SharedModule],   // para usar directivas como *ngIf, *ngFor
+  imports: [CommonModule, CardModule, RatingModule, Button, FormsModule, SharedModule],   // para usar directivas como *ngIf, *ngFor
   templateUrl: './product-view.component.html',
   styleUrls: ['./product-view.component.scss']
 })

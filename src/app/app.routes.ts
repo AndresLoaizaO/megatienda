@@ -9,13 +9,18 @@ export const routes: Routes = [
   { path: '', redirectTo: 'auth/login', pathMatch: 'full' },
 
   { path: 'auth/login', component: LoginComponent },
-  { path: 'catalogo', component: ProductCatalogComponent },       // ruta del catalogo
+  { path: 'catalogo', component: ProductCatalogComponent }, // ruta del catalogo
 
   {
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
 
-  { path: 'auth/register', component: RegisterComponent }
+  { path: 'auth/register', component: RegisterComponent },
+  {
+    path: 'cart',
+    loadComponent: () =>
+      import('./modules/cart/cart/cart.component').then((m) => m.CartComponent),
+  },
 ];

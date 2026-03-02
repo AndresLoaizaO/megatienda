@@ -1,0 +1,49 @@
+<div class="cart-page">
+
+  <!-- IZQUIERDA -->
+  <div class="cart-items">
+
+    <h2>Carrito de compras</h2>
+
+    <div *ngIf="cartItems.length === 0" class="empty-cart">
+      Tu carrito está vacío.
+    </div>
+
+    <div class="cart-item" *ngFor="let item of cartItems">
+
+      <img [src]="item.image" alt="producto">
+
+      <div class="item-info">
+        <h4>{{ item.name }}</h4>
+        <p class="price">{{ item.price | currency }}</p>
+
+        <div class="quantity-controls">
+          <button (click)="decrease(item)">-</button>
+          <span>{{ item.quantity }}</span>
+          <button (click)="increase(item)">+</button>
+        </div>
+
+        <button class="remove" (click)="remove(item.id)">
+          Eliminar
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- DERECHA -->
+  <div class="cart-summary">
+
+    <h3>Subtotal: {{ subtotal | currency }}</h3>
+
+    <button 
+      class="checkout-btn"
+      [disabled]="subtotal === 0">
+      Proceder al pago
+    </button>
+
+  </div>
+
+</div>
