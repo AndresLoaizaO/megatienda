@@ -1,1 +1,17 @@
-<app-product-view></app-product-view>
+<div class="flex h-screen">
+  <!-- Filtros (20%) -->
+  <div class="w-20rem md:w-20rem flex-shrink-0 p-2 border-right-1 surface-border">
+    <!-- contenido de filtros -->
+  </div>
+
+  <!-- Productos (scrollable) -->
+  <div class="flex-1 p-2 overflow-y-auto">
+    <div class="grid">
+      <div class="col-12 sm:col-6 md:col-4 lg:col-3"
+           style="margin-top: 2px; margin-right: 2px"
+           *ngFor="let product of listProducts">
+        <app-product-view [product]="product"></app-product-view>
+      </div>
+    </div>
+  </div>
+</div>

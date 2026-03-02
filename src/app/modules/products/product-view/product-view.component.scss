@@ -33,3 +33,10 @@
 :host ::ng-deep .p-card-body {
   padding: 1.25rem !important;
 }
+
+:host ::ng-deep .card-custom .p-card {
+  border: 2px solid #ffffff;
+  border-radius: 5%;
+}
+
+

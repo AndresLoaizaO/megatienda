@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {Rating} from 'primeng/rating';
 import {Button} from 'primeng/button';
 import {FormsModule} from '@angular/forms';
 import {Card} from 'primeng/card';
-import {interfaceProduct} from '../interface/interfaceProduct';
 import {SharedModule} from 'primeng/api';
+import {Product} from '../../../models/product.model';
 
 @Component({
   selector: 'app-product-view',
@@ -15,12 +15,5 @@ import {SharedModule} from 'primeng/api';
   styleUrls: ['./product-view.component.scss']
 })
 export class ProductViewComponent {
-// En tu componente .ts
-  producto: interfaceProduct = {
-    name: 'Smartwatch Series S',
-    categoria: 'Accesorios',
-    precio: 85.50,
-    rating: 5,
-    imagenUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScLM8IP85y-sXW1OvJ1vvtQadLIsK5FxSakg&s'
-  };
+  @Input() public product: Product = new Product();
 }

@@ -1,3 +1,7 @@
+@import "primeflex/primeflex.css";
+@import "primeicons/primeicons.css";
+
+
 html,
 body {
   height: 100%;
@@ -89,4 +93,10 @@ body {
   border-radius: 12px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   margin: 100px auto;
+}
+
+.card-custom .p-card .p-card-header {
+  justify-content: center !important;
+  align-items: center !important;
+  display: flex;
 }
