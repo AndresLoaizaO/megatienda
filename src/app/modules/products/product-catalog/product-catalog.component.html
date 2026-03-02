@@ -2,6 +2,39 @@
   <!-- Filtros (20%) -->
   <div class="w-20rem md:w-20rem flex-shrink-0 p-2 border-right-1 surface-border">
     <!-- contenido de filtros -->
+
+      <div class="filters-container p-3 border-right-1 surface-border">
+          <!-- Filtro por categoría -->
+          <div class="mb-3">
+              <label for="category" class="block font-bold mb-2">Categoría</label>
+              <select id="category" [(ngModel)]="selectedCategory" class="w-full p-2 border-round">
+                  <option value="">Todas</option>
+                  <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+              </select>
+          </div>
+
+          <!-- Filtro por precio mínimo -->
+          <div class="mb-3">
+              <label for="minPrice" class="block font-bold mb-2">Precio mínimo</label>
+              <input id="minPrice" type="number" [(ngModel)]="minPrice" class="w-full p-2 border-round" />
+          </div>
+
+          <!-- Filtro por precio máximo -->
+          <div class="mb-3">
+              <label for="maxPrice" class="block font-bold mb-2">Precio máximo</label>
+              <input id="maxPrice" type="number" [(ngModel)]="maxPrice" class="w-full p-2 border-round" />
+          </div>
+
+          <!-- Botón aplicar -->
+          <div class="mt-4">
+              <button (click)="applyFilters()" class="w-full p-2 border-round bg-primary text-white">
+                  Aplicar filtros
+              </button>
+          </div>
+      </div>
+
+
+
   </div>
 
   <!-- Productos (scrollable) -->
