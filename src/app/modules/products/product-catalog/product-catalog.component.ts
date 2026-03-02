@@ -9,6 +9,8 @@ import {SelectItem} from 'primeng/api';
 import {DropdownModule} from 'primeng/dropdown';
 import {Select} from 'primeng/select';
 import {Button} from 'primeng/button';
+import {ComunicacionService} from '../../../services/communication-service';
+import {Subject, take, takeUntil} from 'rxjs';
 
 @Component({
   selector: 'app-product-catalog',
@@ -35,10 +37,20 @@ export class ProductCatalogComponent implements OnInit {
   selectedCategory: string = '';
   minPrice: number | null = null;
   maxPrice: number | null = null;
+  dato: string = '';
+  private destroy$ = new Subject<void>();
+
 
   constructor(
-    private _productServiceService : ProductServiceService
-  ) { }
+    private _productServiceService : ProductServiceService,
+    private comunicacionService: ComunicacionService
+  ) {
+    this.comunicacionService.busqueda$.subscribe(valor => {
+      console.log('Nueva búsqueda recibida:', valor);
+      this.searhcName(valor);
+    });
+
+  }
   ngOnInit() {
     this._productServiceService.getProducts().subscribe(data => {
       this.listProducts = data;
@@ -85,9 +97,18 @@ export class ProductCatalogComponent implements OnInit {
   }
   clearFilters() {
     this.listProducts = this.listProductsTodos;
+    this.maxPrice = null;
+    this.minPrice = null;
+    this.selectedCategory = '';
 
   }
 
-
+  searhcName(dato: string) {
+    if (dato.length > 4) {
+      this.listProducts = this._productServiceService.filterName(this.listProductsTodos, dato);
+    } else {
+      this.listProducts = this.listProductsTodos;
+    }
+  }
 
 }

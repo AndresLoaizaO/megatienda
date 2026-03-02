@@ -24,5 +24,21 @@ export class ProductServiceService {
     });
   }
 
+  filterName(products: Product[], filter: string) {
+    const normalize = (text: string) =>
+      text
+        .normalize("NFD") // descompone caracteres con tilde
+        .replace(/[\u0300-\u036f]/g, "") // elimina los diacríticos
+        .toLowerCase();
+
+    const coincidencias = products.filter(product =>
+      normalize(product?.name ?? "").includes(normalize(filter))
+    );
+
+    return coincidencias;
+  }
+
+
+
 
 }

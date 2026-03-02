@@ -8,7 +8,7 @@
       type="text"
       placeholder="Buscar productos..."
       [(ngModel)]="searchText"
-      (keyup.enter)="search()"
+      (input)="search()"
     />
     <button (click)="search()">
       <svg
