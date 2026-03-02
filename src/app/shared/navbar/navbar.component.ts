@@ -4,6 +4,7 @@ import { RouterModule, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CartService } from '../../core/services/cart.service';
 import { AuthService } from '../../core/services/auth.service';
+import {ComunicacionService} from '../../services/communication-service';
 
 @Component({
   selector: 'app-navbar',
@@ -19,11 +20,20 @@ export class NavbarComponent {
     public cartService: CartService,
     public authService: AuthService,
     private router: Router,
+    private comunicacionService: ComunicacionService
   ) {}
 
   search() {
-    if (!this.searchText.trim()) return;
+    if (this.searchText.trim()) {
+      this.comunicacionService.enviarBusqueda(this.searchText);
+    }
+    if (!this.searchText.trim() || this.searchText.length < 4) return;
+    this.comunicacionService.enviarBusqueda(this.searchText);
+    // this.router.navigate(['/catalogo'], {
+    //   queryParams: { q: this.searchText }
+    // });
 
+    // this.searchText = '';
     this.router.navigate(['/catalogo'], {
       queryParams: { q: this.searchText },
     });
