@@ -1,68 +1,110 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
 
-  private STORAGE_KEY = 'cart';
+  private cartItems: any[] = [];
+  private cartCount = new BehaviorSubject<number>(0);
 
-  // Obtener carrito
-  getCart(): any[] {
-    return JSON.parse(localStorage.getItem(this.STORAGE_KEY) || '[]');
+  cartCount$ = this.cartCount.asObservable();
+
+  constructor() {
+    this.loadCart();
   }
 
-  // Guardar carrito
-  private saveCart(cart: any[]) {
-    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(cart));
+  // CARGAR CARRITO DESDE el STORAGE
+
+  private loadCart() {
+    const savedCart = localStorage.getItem('cart');
+
+    if (savedCart) {
+      this.cartItems = JSON.parse(savedCart);
+      this.updateCartCount();
+    }
   }
 
-  // Agregar producto
+  // AGREGAR PRODUCTO
   addToCart(product: any) {
-    const cart = this.getCart();
-    const existing = cart.find(p => p.id === product.id);
 
-    if (existing) {
-      existing.quantity += 1;
+    const existingProduct = this.cartItems.find(
+      item => item.id === product.id
+    );
+
+    if (existingProduct) {
+      existingProduct.quantity++;
     } else {
-      cart.push({ ...product, quantity: 1 });
+      this.cartItems.push({
+        ...product,
+        quantity: 1
+      });
     }
 
-    this.saveCart(cart);
+    this.saveCart();
   }
 
-  // Eliminar producto
-  removeItem(id: number) {
-    const cart = this.getCart().filter(p => p.id !== id);
-    this.saveCart(cart);
+  // OBTENER ITEMS
+  getItems() {
+    return this.cartItems;
   }
 
-  // Actualizar cantidad
-  updateQuantity(id: number, change: number) {
-    const cart = this.getCart();
-    const item = cart.find(p => p.id === id);
+  // AUMENTAR CANTIDAD
+  increaseQuantity(product: any) {
+    product.quantity++;
+    this.saveCart();
+  }
 
-    if (item) {
-      item.quantity += change;
-
-      if (item.quantity <= 0) {
-        this.removeItem(id);
-        return;
-      }
+  // DISMINUIR CANTIDAD
+  decreaseQuantity(product: any) {
+    if (product.quantity > 1) {
+      product.quantity--;
+    } else {
+      this.removeItem(product.id);
     }
 
-    this.saveCart(cart);
+    this.saveCart();
   }
 
-  // Subtotal
+  // ELIMINAR PRODUCTO
+  removeItem(productId: number) {
+    this.cartItems = this.cartItems.filter(
+      item => item.id !== productId
+    );
+
+    this.saveCart();
+  }
+
+  // SUBTOTAL
   getSubtotal(): number {
-    return this.getCart()
-      .reduce((total, item) => total + item.price * item.quantity, 0);
+    return this.cartItems.reduce((total, item) => {
+      return total + (item.price * item.quantity);
+    }, 0);
   }
 
-  // Total de productos
+  // TOTAL ITEMS (contador navbar)
   getTotalItems(): number {
-    return this.getCart()
-      .reduce((total, item) => total + item.quantity, 0);
+    return this.cartItems.reduce((total, item) => {
+      return total + item.quantity;
+    }, 0);
+  }
+
+  // LIMPIAR CARRITO
+  clearCart() {
+    this.cartItems = [];
+    this.saveCart();
+  }
+
+  // GUARDAR EN STORAGE
+  private saveCart() {
+    localStorage.setItem('cart', JSON.stringify(this.cartItems));
+    this.updateCartCount();
+  }
+
+  // ACTUALIZAR CONTADOR
+  private updateCartCount() {
+    const totalItems = this.getTotalItems();
+    this.cartCount.next(totalItems);
   }
 }

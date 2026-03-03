@@ -1,59 +1,40 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../../core/services/cart.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-cart',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css'],
+  styleUrls: ['./cart.component.scss']
 })
 export class CartComponent {
+
   cartItems: any[] = [];
+  subtotal: number = 0;
 
-  constructor(private cartService: CartService) {}
-
-  ngOnInit(): void {
-    this.cartItems = [
-      {
-        id: 1,
-        name: 'Zapato deportivo',
-        price: 120,
-        quantity: 2,
-        image: 'https://via.placeholder.com/120',
-      },
-      {
-        id: 2,
-        name: 'Camiseta deportiva',
-        price: 60,
-        quantity: 1,
-        image: 'https://via.placeholder.com/120',
-      },
-    ];
+  constructor(private cartService: CartService) {
+    this.loadCart();
   }
+
   loadCart() {
-    this.cartItems = this.cartService.getCart();
+    this.cartItems = this.cartService.getItems();
+    this.subtotal = this.cartService.getSubtotal();
   }
 
   increase(item: any) {
-    item.quantity++;
+    this.cartService.increaseQuantity(item);
+    this.loadCart();
   }
 
   decrease(item: any) {
-    if (item.quantity > 1) {
-      item.quantity--;
-    }
+    this.cartService.decreaseQuantity(item);
+    this.loadCart();
   }
 
   remove(id: number) {
-    this.cartItems = this.cartItems.filter((item) => item.id !== id);
-  }
-
-  get subtotal(): number {
-    return this.cartItems.reduce(
-      (total, item) => total + item.price * item.quantity,
-      0,
-    );
+    this.cartService.removeItem(id);
+    this.loadCart();
   }
 }
