@@ -20,7 +20,7 @@
     "category": "Audio",
     "brand": "SoundBeat",
     "stock": 25,
-    "imageUrl": null,
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMzAIFDOYxuizGGxLCTQuUpa1CJpsOftjjSg&s",
     "rating": 5
   },
   {
@@ -32,7 +32,7 @@
     "category": "Video",
     "brand": "VisionMax",
     "stock": 6,
-    "imageUrl": null,
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSK63eGMCBp7ktmXBObmY8NoPbG2-aXs-Xdew&s",
     "rating": 4
   },
   {
@@ -44,7 +44,7 @@
     "category": "Ropa",
     "brand": "ActiveWear",
     "stock": 40,
-    "imageUrl": null,
+    "imageUrl": "https://image.made-in-china.com/202f0j00eklBhGMPEDqj/1-4-Zip-Running-Gym-Men-T-Shirt-Color-Block-Sport-Outdoor-Shirt-100-Polyester-Dry-Fit-Shirts.webp",
     "rating": 4
   },
   {
@@ -56,7 +56,7 @@
     "category": "Tecnología",
     "brand": "TechMobile",
     "stock": 12,
-    "imageUrl": null,
+    "imageUrl": "https://consumer.huawei.com/dam/content/dam/huawei-cbg-site/common/mkt/list-image/phones/nova-5t/nova5t-purple.png",
     "rating": 5
   },
 
@@ -69,7 +69,7 @@
     "category": "Calzado",
     "brand": "StreetWalk",
     "stock": 20,
-    "imageUrl": null,
+    "imageUrl": "https://acdn-us.mitiendanube.com/stores/001/170/047/products/6-ojal-2-7252578d9c79e70bde17217147474093-1024-1024.webp",
     "rating": 4
   },
   {
@@ -81,7 +81,7 @@
     "category": "Audio",
     "brand": "SoundBeat",
     "stock": 9,
-    "imageUrl": null,
+    "imageUrl": "https://http2.mlstatic.com/D_Q_NP_2X_709411-MCO92428616413_092025-T.webp",
     "rating": 4
   },
   {
@@ -93,7 +93,7 @@
     "category": "Video",
     "brand": "VisionMax",
     "stock": 5,
-    "imageUrl": null,
+    "imageUrl": "https://mediaserver.goepson.com/adaptivemedia/rendition?id=d6d3374eaa867b64813dfb975ad60646c71a5238&vid=d6d3374eaa867b64813dfb975ad60646c71a5238&prid=1200Wx1200H&clid=SAPDAM&prclid=banner&assetDescr=HC1080_top-headon_690x460",
     "rating": 4
   },
   {
@@ -105,7 +105,7 @@
     "category": "Ropa",
     "brand": "OutdoorPro",
     "stock": 15,
-    "imageUrl": null,
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmWEr4BESFpJunepXUl3nCggz61oLyvPD3bw&s",
     "rating": 5
   },
   {
