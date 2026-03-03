@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -13,9 +13,9 @@ import {ComunicacionService} from '../../services/communication-service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
   searchText: string = '';
-
+  cartCount: number = 0;
   constructor(
     public cartService: CartService,
     public authService: AuthService,
@@ -23,11 +23,17 @@ export class NavbarComponent {
     private comunicacionService: ComunicacionService
   ) {}
 
+  ngOnInit(): void {
+    this.cartService.cartCount$.subscribe(count => {
+      this.cartCount = count;
+    });
+  }
+
   search() {
     if (this.searchText.trim()) {
       this.comunicacionService.enviarBusqueda(this.searchText);
     }
-    if (!this.searchText.trim() || this.searchText.length < 4) return;
+    if (!this.searchText.trim() || this.searchText.length < 3) return;
     this.comunicacionService.enviarBusqueda(this.searchText);
     // this.router.navigate(['/catalogo'], {
     //   queryParams: { q: this.searchText }

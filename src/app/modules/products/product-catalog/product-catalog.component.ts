@@ -46,7 +46,6 @@ export class ProductCatalogComponent implements OnInit {
     private comunicacionService: ComunicacionService
   ) {
     this.comunicacionService.busqueda$.subscribe(valor => {
-      console.log('Nueva búsqueda recibida:', valor);
       this.searhcName(valor);
     });
 
@@ -104,7 +103,7 @@ export class ProductCatalogComponent implements OnInit {
   }
 
   searhcName(dato: string) {
-    if (dato.length > 4) {
+    if (dato.length > 3) {
       this.listProducts = this._productServiceService.filterName(this.listProductsTodos, dato);
     } else {
       this.listProducts = this.listProductsTodos;
