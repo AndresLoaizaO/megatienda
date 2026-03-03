@@ -13,7 +13,7 @@ import { ComunicacionService } from '../../services/communication-service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
 
   cartCount: number = 0;
   searchText: string = '';
@@ -24,8 +24,11 @@ export class NavbarComponent {
     private comunicacionService: ComunicacionService,
   ) {}
 
-  
-
+  ngOnInit(): void {
+    this.cartService.cartCount$.subscribe(count => {
+      this.cartCount = count;
+    });
+  }
   search() {
     if (this.searchText.trim()) {
       this.comunicacionService.enviarBusqueda(this.searchText);
