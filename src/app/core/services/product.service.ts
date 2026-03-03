@@ -24,7 +24,7 @@ export class ProductService {
     return this.productRepository.getAll().pipe(
       map(products =>
         products.filter(p =>
-          p.category.toLowerCase() === category.toLowerCase()
+          p?.category?.toLowerCase() === category.toLowerCase()
         )
       )
     );
@@ -33,7 +33,8 @@ export class ProductService {
   /**
    * Filtra por rango de precio
    */
-  filterByPrice(min: number, max: number): Observable<Product[]> {
+  /*filterByPrice(min: number, max: number): Observable<Product[]> {
+    // @ts-ignore
     return this.productRepository.getAll().pipe(
       map(products =>
         products.filter(p =>
@@ -41,7 +42,7 @@ export class ProductService {
         )
       )
     );
-  }
+  }*/
 
   /**
    * Filtra por marca
@@ -50,7 +51,7 @@ export class ProductService {
     return this.productRepository.getAll().pipe(
       map(products =>
         products.filter(p =>
-          p.brand.toLowerCase() === brand.toLowerCase()
+          p?.brand?.toLowerCase() === brand.toLowerCase()
         )
       )
     );
