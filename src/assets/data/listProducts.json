@@ -8,7 +8,7 @@
     "category": "Calzado",
     "brand": "RunFast",
     "stock": 18,
-    "imageUrl": null,
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdJqVbwfVnT_4yg1pderiDgfILZxrheRf40w&shttps://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdJqVbwfVnT_4yg1pderiDgfILZxrheRf40w&s",
     "rating": 4
   },
   {
@@ -20,7 +20,7 @@
     "category": "Audio",
     "brand": "SoundBeat",
     "stock": 25,
-    "imageUrl": null,
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMzAIFDOYxuizGGxLCTQuUpa1CJpsOftjjSg&s",
     "rating": 5
   },
   {
@@ -32,7 +32,7 @@
     "category": "Video",
     "brand": "VisionMax",
     "stock": 6,
-    "imageUrl": null,
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSK63eGMCBp7ktmXBObmY8NoPbG2-aXs-Xdew&s",
     "rating": 4
   },
   {
@@ -44,7 +44,7 @@
     "category": "Ropa",
     "brand": "ActiveWear",
     "stock": 40,
-    "imageUrl": null,
+    "imageUrl": "https://image.made-in-china.com/202f0j00eklBhGMPEDqj/1-4-Zip-Running-Gym-Men-T-Shirt-Color-Block-Sport-Outdoor-Shirt-100-Polyester-Dry-Fit-Shirts.webp",
     "rating": 4
   },
   {
@@ -56,7 +56,7 @@
     "category": "Tecnología",
     "brand": "TechMobile",
     "stock": 12,
-    "imageUrl": null,
+    "imageUrl": "https://consumer.huawei.com/dam/content/dam/huawei-cbg-site/common/mkt/list-image/phones/nova-5t/nova5t-purple.png",
     "rating": 5
   },
 
@@ -69,7 +69,7 @@
     "category": "Calzado",
     "brand": "StreetWalk",
     "stock": 20,
-    "imageUrl": null,
+    "imageUrl": "https://acdn-us.mitiendanube.com/stores/001/170/047/products/6-ojal-2-7252578d9c79e70bde17217147474093-1024-1024.webp",
     "rating": 4
   },
   {
@@ -81,7 +81,7 @@
     "category": "Audio",
     "brand": "SoundBeat",
     "stock": 9,
-    "imageUrl": null,
+    "imageUrl": "https://http2.mlstatic.com/D_Q_NP_2X_709411-MCO92428616413_092025-T.webp",
     "rating": 4
   },
   {
@@ -93,7 +93,7 @@
     "category": "Video",
     "brand": "VisionMax",
     "stock": 5,
-    "imageUrl": null,
+    "imageUrl": "https://mediaserver.goepson.com/adaptivemedia/rendition?id=d6d3374eaa867b64813dfb975ad60646c71a5238&vid=d6d3374eaa867b64813dfb975ad60646c71a5238&prid=1200Wx1200H&clid=SAPDAM&prclid=banner&assetDescr=HC1080_top-headon_690x460",
     "rating": 4
   },
   {
@@ -105,7 +105,7 @@
     "category": "Ropa",
     "brand": "OutdoorPro",
     "stock": 15,
-    "imageUrl": null,
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmWEr4BESFpJunepXUl3nCggz61oLyvPD3bw&s",
     "rating": 5
   },
   {
@@ -129,7 +129,7 @@
     "category": "Calzado",
     "brand": "RunFast",
     "stock": 14,
-    "imageUrl": null,
+    "imageUrl": "https://assets.adidas.com/images/w_600,f_auto,q_auto/d43339eb80f340bca123e9643f8e5a63_9366/Tenis_de_Trail_Running_Terrex_Agravic_Speed_2_Blanco_JS3536_DM51.jpg",
     "rating": 5
   },
   {
@@ -249,7 +249,7 @@
     "category": "Calzado",
     "brand": "ClassicWear",
     "stock": 16,
-    "imageUrl": null,
+    "imageUrl": "https://m.media-amazon.com/images/I/61-opjaMLqL._AC_UY900_.jpg",
     "rating": 4
   },
   {
@@ -369,7 +369,7 @@
     "category": "Calzado",
     "brand": "RunFast",
     "stock": 20,
-    "imageUrl": null,
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8fS4K0moOpXITKC2WaW30Nl4GsG5PM5yLbw&s",
     "rating": 5
   },
   {
@@ -669,7 +669,7 @@
     "category": "Calzado",
     "brand": "RunFast",
     "stock": 22,
-    "imageUrl": null,
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5NqBs5oFg9OxMVPjHQaLpXSVIyLSBF517bw&s",
     "rating": 5
   },
   {
@@ -789,7 +789,7 @@
     "category": "Calzado",
     "brand": "ClassicWear",
     "stock": 14,
-    "imageUrl": null,
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWFWF13V630LbQmPCT9VVkjZjJ_gLzlbx62A&s",
     "rating": 4
   },
   {

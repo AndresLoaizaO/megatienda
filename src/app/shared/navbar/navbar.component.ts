@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -17,7 +17,6 @@ export class NavbarComponent {
 
   cartCount: number = 0;
   searchText: string = '';
-
   constructor(
     public cartService: CartService,
     public authService: AuthService,
@@ -31,7 +30,7 @@ export class NavbarComponent {
     if (this.searchText.trim()) {
       this.comunicacionService.enviarBusqueda(this.searchText);
     }
-    if (!this.searchText.trim() || this.searchText.length < 4) return;
+    if (!this.searchText.trim() || this.searchText.length < 3) return;
     this.comunicacionService.enviarBusqueda(this.searchText);
     this.router.navigate(['/catalogo'], {
     queryParams: { q: this.searchText }
