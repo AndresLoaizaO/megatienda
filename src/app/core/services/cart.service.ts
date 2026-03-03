@@ -2,13 +2,11 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CartService {
-
   private cartItems: any[] = [];
   private cartCount = new BehaviorSubject<number>(0);
-
   cartCount$ = this.cartCount.asObservable();
 
   constructor() {
@@ -28,9 +26,8 @@ export class CartService {
 
   // AGREGAR PRODUCTO
   addToCart(product: any) {
-
     const existingProduct = this.cartItems.find(
-      item => item.id === product.id
+      (item) => item.id === product.id,
     );
 
     if (existingProduct) {
@@ -38,10 +35,11 @@ export class CartService {
     } else {
       this.cartItems.push({
         ...product,
-        quantity: 1
+        quantity: 1,
       });
     }
 
+    this.cartCount.next(this.getTotalItems());
     this.saveCart();
   }
 
@@ -69,9 +67,7 @@ export class CartService {
 
   // ELIMINAR PRODUCTO
   removeItem(productId: number) {
-    this.cartItems = this.cartItems.filter(
-      item => item.id !== productId
-    );
+    this.cartItems = this.cartItems.filter((item) => item.id !== productId);
 
     this.saveCart();
   }
@@ -79,7 +75,7 @@ export class CartService {
   // SUBTOTAL
   getSubtotal(): number {
     return this.cartItems.reduce((total, item) => {
-      return total + (item.price * item.quantity);
+      return total + item.price * item.quantity;
     }, 0);
   }
 

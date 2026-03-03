@@ -4,7 +4,7 @@ import { RouterModule, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CartService } from '../../core/services/cart.service';
 import { AuthService } from '../../core/services/auth.service';
-import {ComunicacionService} from '../../services/communication-service';
+import { ComunicacionService } from '../../services/communication-service';
 
 @Component({
   selector: 'app-navbar',
@@ -14,14 +14,18 @@ import {ComunicacionService} from '../../services/communication-service';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent {
+
+  cartCount: number = 0;
   searchText: string = '';
 
   constructor(
     public cartService: CartService,
     public authService: AuthService,
     private router: Router,
-    private comunicacionService: ComunicacionService
+    private comunicacionService: ComunicacionService,
   ) {}
+
+  
 
   search() {
     if (this.searchText.trim()) {
@@ -29,15 +33,14 @@ export class NavbarComponent {
     }
     if (!this.searchText.trim() || this.searchText.length < 4) return;
     this.comunicacionService.enviarBusqueda(this.searchText);
-    // this.router.navigate(['/catalogo'], {
-    //   queryParams: { q: this.searchText }
-    // });
+    this.router.navigate(['/catalogo'], {
+    queryParams: { q: this.searchText }
+    });
 
-    // this.searchText = '';
+    this.searchText = '';
     this.router.navigate(['/catalogo'], {
       queryParams: { q: this.searchText },
     });
-
   }
 
   isAdmin(): boolean {
