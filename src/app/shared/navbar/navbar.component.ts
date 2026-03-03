@@ -38,7 +38,6 @@ export class NavbarComponent {
       queryParams: { q: this.searchText },
     });
 
-    this.searchText = '';
   }
 
   isAdmin(): boolean {
