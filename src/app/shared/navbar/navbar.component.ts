@@ -39,7 +39,7 @@ export class NavbarComponent implements OnInit {
     queryParams: { q: this.searchText }
     });
 
-    this.searchText = '';
+    //this.searchText = '';
     this.router.navigate(['/catalogo'], {
       queryParams: { q: this.searchText },
     });
