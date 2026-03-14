@@ -1,17 +1,24 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {map, Observable} from 'rxjs';
 import {Product} from '../models/product.model';
+import {AppSettings} from '../../proyect.config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductServiceService {
   products : Product[]=[]
-  constructor(private http: HttpClient) { }
+  private rutServProducts: string = AppSettings.rutServProducts;
+
+  constructor(
+    private http: HttpClient
+  ) { }
 
   getProducts() {
-    return this.http.get<Product[]>('assets/data/listProducts.json');
+    console.log(`${this.rutServProducts}/all`);
+    return  this.http.get(`${this.rutServProducts}/all`).pipe(map(response => response as Product[]) );
+    //return this.http.get<Product[]>('assets/data/listProducts.json');
   }
 
   // Filtrar productos en memoria
