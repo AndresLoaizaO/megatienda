@@ -8,4 +8,5 @@ export class Product {
   stock: number | null = null;
   imageUrl: string | null = null;
   rating: number | null = null;
+  enabled: boolean | null = null;
 }
