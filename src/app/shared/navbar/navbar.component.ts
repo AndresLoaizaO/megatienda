@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { CartService } from '../../core/services/cart.service';
+import { CartService } from '../../services/cart.service';
 import { AuthService } from '../../core/services/auth.service';
 import { ComunicacionService } from '../../services/communication-service';
 
@@ -25,10 +25,14 @@ export class NavbarComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.cartService.cartCount$.subscribe(count => {
-      this.cartCount = count;
-    });
-  }
+
+  this.cartService.cartCount$.subscribe(count => {
+    this.cartCount = count;
+  });
+
+}
+
+
   search() {
     if (this.searchText.trim()) {
       this.comunicacionService.enviarBusqueda(this.searchText);

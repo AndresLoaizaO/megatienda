@@ -1,5 +1,28 @@
+<!--<h2>Carrito</h2>
+
+<div *ngFor="let item of cartItems">
+
+  <p>Producto ID: {{item.productId}}</p>
+  <p>Cantidad: {{item.quantity}}</p>
+
+  <button (click)="remove(item.productId)">
+    Eliminar
+  </button>
+
+</div>
+
+<button (click)="clear()">
+Vaciar carrito
+</button>
+
+-->
+
+
+
+
+
+
 <div class="cart-page">
-  <!-- IZQUIERDA -->
   <div class="cart-left">
     <h2>Carrito de compras</h2>
 
@@ -25,12 +48,12 @@
           <button (click)="increase(item)">+</button>
         </div>
 
-        <button class="remove" (click)="remove(item.id)">Eliminar</button>
+        <button class="remove" (click)="remove(item.productId)">Eliminar</button>
       </div>
     </div>
   </div>
 
-  <!-- DERECHA -->
+
   <div class="cart-right">
     <div class="summary-card">
       <h3>Subtotal</h3>
@@ -45,3 +68,5 @@
     </div>
   </div>
 </div>
+
+
