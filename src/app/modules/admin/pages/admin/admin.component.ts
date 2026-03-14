@@ -14,6 +14,7 @@ import {FileUpload} from 'primeng/fileupload';
 import {TableModule} from 'primeng/table';
 import {Toast, ToastModule} from 'primeng/toast';
 import {ConfirmDialog, ConfirmDialogModule} from 'primeng/confirmdialog';
+import {firstValueFrom} from 'rxjs';
 
 @Component({
   selector: 'app-admin',
@@ -115,7 +116,7 @@ export class AdminComponent implements OnInit, AfterViewInit {
     }
   }
 
-  onSubmit() {
+  async onSubmit() {
     if (this.productForm.invalid) {
       this.productForm.markAllAsTouched();
       return;
@@ -128,7 +129,13 @@ export class AdminComponent implements OnInit, AfterViewInit {
         detail: 'El producto se guardó correctamente',
         icon: 'pi pi-check'
       });
-      this.clearForm();
+      if (!this.productForm.value.id){
+        await firstValueFrom(this._productService.addProduct(this.productForm.value));
+
+      }else {
+        await firstValueFrom(this._productService.updateProduct(this.productForm.value));
+      }
+      await this.clearForm();
     }
 
 
@@ -141,14 +148,15 @@ export class AdminComponent implements OnInit, AfterViewInit {
       icon: 'pi pi-exclamation-triangle',
       acceptLabel: 'Sí, inhabilitar',
       rejectLabel: 'Cancelar',
-      accept: () => {
-        this.disable(item);
+      accept: async () => {
+        await this.disable(item);
       }
     });
   }
 
-  disable(item:Product) {
+  async disable(item:Product) {
     this.listProducts = this.listProducts.filter(product => product.id !== item.id);
+    await firstValueFrom(this._productService.deleteProduct(item))
     this.messageService.add({
       severity: 'warn',
       summary: 'Inhabilitado',
@@ -160,6 +168,7 @@ export class AdminComponent implements OnInit, AfterViewInit {
   edit(item: Product) {
     if (!item) return;
     this.productForm.patchValue({
+      id: item.id,
       name: item.name,
       brand: item.brand,
       description: item.description,
@@ -174,8 +183,8 @@ export class AdminComponent implements OnInit, AfterViewInit {
   onCancel(){
     this.clearForm();
   }
-  clearForm() {
-    this.productForm.reset();
+  async clearForm() {
+   await this.productForm.reset();
   }
 
 }
