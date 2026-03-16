@@ -16,7 +16,6 @@ export class ProductServiceService {
   ) { }
 
   getProducts() {
-    console.log(`${this.rutServProducts}/all`);
     return  this.http.get(`${this.rutServProducts}/all`).pipe(map(response => response as Product[]) );
     //return this.http.get<Product[]>('assets/data/listProducts.json');
   }
@@ -45,6 +44,31 @@ export class ProductServiceService {
     return coincidencias;
   }
 
+  deleteProduct(product: Product) {
+    return  this.http.delete(`${this.rutServProducts}/${product.id}`).pipe(map(response => response as any) );
+  }
+
+  addProduct(product: Product) {
+    return this.http.post(`${this.rutServProducts}/add`, product, {
+      responseType: 'text'
+    }).pipe(
+      map(response => {
+        // Aquí 'response' será simplemente el string "Producto agregado"
+        return { message: response };
+      })
+    );
+  }
+
+  updateProduct(product: Product) {
+    return this.http.put(`${this.rutServProducts}/${product.id}`, product, {
+      responseType: 'text'
+    }).pipe(
+      map(response => {
+        // Aquí 'response' será simplemente el string "Producto agregado"
+        return { message: response };
+      })
+    );
+  }
 
 
 
