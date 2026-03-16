@@ -3,56 +3,41 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { AppSettings } from '../../proyect.config';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  private apiUrl = 'http://localhost:8080/cart';
+
+  private apiUrl = AppSettings.rutServCart;
+
+  cartCount = new BehaviorSubject<number>(0);
+  cartCount$ = this.cartCount.asObservable();
 
   constructor(private http: HttpClient) {}
 
-  // obtener carrito
   getCart(): Observable<any> {
-    return this.http.get(this.apiUrl);
+    return this.http.get(`${this.apiUrl}/enable`);
   }
 
-  private cartCount = new BehaviorSubject<number>(0);
-  cartCount$ = this.cartCount.asObservable();
-
-  updateCartCount(count: number) {
+  updateCartCount(count:number){
     this.cartCount.next(count);
   }
 
-  // agregar producto
+  addToCart(productId:number, quantity:number){
+    return this.http.post(`${this.apiUrl}/add`,{
+      productId,
+      quantity
+    });
+  }
 
-  addToCart(productId: number, quantity: number){
-
-  return this.http.post(`${this.apiUrl}/add`, {
-    productId: productId,
-    quantity: quantity
-  }).pipe(
-    tap(() => {
-
-      this.getCart().subscribe(cart => {
-
-        const totalItems = cart.reduce((sum:any,item:any)=> sum + item.quantity,0);
-
-        this.updateCartCount(totalItems);
-
-      });
-
-    })
-  );
-
-}
-  // eliminar producto
-  removeFromCart(productId: number) {
+  removeFromCart(productId:number){
     return this.http.delete(`${this.apiUrl}/remove/${productId}`);
   }
 
-  // vaciar carrito
-  clearCart() {
+  clearCart(){
     return this.http.delete(`${this.apiUrl}/clear`);
   }
+
 }

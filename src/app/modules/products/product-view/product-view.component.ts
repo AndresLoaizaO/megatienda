@@ -14,20 +14,19 @@ import { CartService } from '../../../services/cart.service';
   styleUrls: ['./product-view.component.scss'],
 })
 export class ProductViewComponent {
-  @Input() product: any; // simple por ahora
+  @Input() product: any;
 
   constructor(private cartService: CartService) {}
 
-  addToCart(product: any) {
-    this.cartService.addToCart(product.id, 1).subscribe(() => {
-      this.cartService.getCart().subscribe((cart) => {
-        const total = cart.reduce(
-          (sum: any, item: any) => sum + item.quantity,
-          0,
-        );
+  addToCart(productId: number) {
+    this.cartService.addToCart(productId, 1).subscribe({
+      next: () => {
+        this.cartService.updateCartCount(this.cartService.cartCount.value + 1);
+      },
 
-        this.cartService.updateCartCount(total);
-      });
+      error: () => {
+        this.cartService.updateCartCount(this.cartService.cartCount.value + 1);
+      },
     });
   }
 }
