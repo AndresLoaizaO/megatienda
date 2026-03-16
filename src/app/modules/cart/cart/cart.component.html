@@ -1,5 +1,5 @@
+
 <div class="cart-page">
-  <!-- IZQUIERDA -->
   <div class="cart-left">
     <h2>Carrito de compras</h2>
 
@@ -7,7 +7,8 @@
       Tu carrito está vacío.
     </div>
 
-    <div *ngFor="let item of cartItems" class="cart-item">
+    <div *ngFor="let item of cartItems; trackBy: trackByProduct" class="cart-item">
+
       <div class="item-image">
         <img
           [src]="item.imageUrl || 'assets/images/visores.png'"
@@ -25,12 +26,12 @@
           <button (click)="increase(item)">+</button>
         </div>
 
-        <button class="remove" (click)="remove(item.id)">Eliminar</button>
+        <button class="remove" (click)="remove(item.productId)">Eliminar</button>
       </div>
     </div>
   </div>
 
-  <!-- DERECHA -->
+
   <div class="cart-right">
     <div class="summary-card">
       <h3>Subtotal</h3>
@@ -45,3 +46,5 @@
     </div>
   </div>
 </div>
+
+
